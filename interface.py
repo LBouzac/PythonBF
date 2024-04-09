@@ -1,21 +1,31 @@
 import tkinter as tk
-from tkinter import Label, Text, END
+from tkinter import *
+import styles
 
 def create_window():
-    window = tk.Tk()  # Crée une nouvelle fenêtre
-    window.title("Python Certif")
-    window.geometry("720x540")  # Définit la taille de la fenêtre
 
-    button = tk.Button(window, text="Clique", command=on_button_click)
-    button.pack()
+    window = tk.Tk()
+    styles.interface_style(window)
 
-    button_exit = tk.Button(window, text="Exit", command=exit_program)  # Utilisez le nouveau nom de la fonction ici
-    button_exit.pack()
+    table = tk.Frame(window)
+    styles.table_style(table)
 
-    monAffichage = Label(window, text="C’est ici que j’affiche mon premier texte !")
+
+    button_frame = tk.Frame(window)
+    styles.button_frame_style(button_frame)
+
+
+    button = tk.Button(button_frame, text="Clique", command=on_button_click)
+    button.pack(side=tk.LEFT)
+    styles.style_button(button)
+
+    button_exit = tk.Button(button_frame, text="Exit", command=exit_program)
+    button_exit.pack(side=tk.LEFT, padx=(10, 0))
+    styles.style_button_exit(button_exit)
+
+    monAffichage = Label(window, text="")
     monAffichage.pack()
 
-    # Ajoutez ce widget Text
     global password_display
     password_display = Text(window)
     password_display.pack()
