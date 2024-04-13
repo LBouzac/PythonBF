@@ -74,7 +74,7 @@ class Application:
 
     def run_brute_force(self):
         try:
-            guess.guess_password('fzr@M5', self.password_display)
+            guess.guess_password(guess, self.password_display)
         except Exception as e:
             messagebox.showerror("Error", str(e))
 
