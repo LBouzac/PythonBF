@@ -5,9 +5,9 @@ import requests
 from tkinter import END
 
 MAX_PASSWORD_LENGTH = 64
-CHARS = 'abcdefgZ1234'
+CHARS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 
-url = 'http://localhost/projets/B2SLAM-AppRestoWeb/connexion.php'
+url = 'http://localhost/projets/BruteForce/index.php'
 
 
 def guess_password(real, password_display):
@@ -26,7 +26,7 @@ def guess_password(real, password_display):
                     guess = ''.join(guess)
 
                     data = {
-                        'login': 'test',
+                        'login': 'Test',
                         'password': guess,
                         'submit': 'submit',
                     }
@@ -35,8 +35,9 @@ def guess_password(real, password_display):
 
                     response_url = response.url
 
-                    print(response_url)
-                    if response_url != 'http://localhost/projets/B2SLAM-AppRestoWeb/connexion.php':
+                    print(guess)
+                    print(response_url + "=" + url)
+                    if response_url != url:
                         end_time = time.perf_counter()
                         time_taken = round(end_time - start_time, 3)
                         result = f'\n\nLe mot de passe est {guess}. \nTrouvé après {attempts} tentatives. \nDurée: {time_taken} secondes.\n'
