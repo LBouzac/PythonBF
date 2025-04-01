@@ -33,6 +33,24 @@ python main.py
 - os
 - ctypes
 
+N'oubliez pas de créer un fichier `Dockerfile` dans votre projet pour que les instructions Docker fonctionnent correctement. Voici un exemple de `Dockerfile` :
+
+```dockerfile
+# Utiliser une image de base Python
+FROM python:3.9
+
+# Définir le répertoire de travail
+WORKDIR /app
+
+# Copier les fichiers de l'application
+COPY . /app
+
+# Installer les dépendances
+RUN pip install -r requirements.txt
+
+# Définir la commande par défaut
+CMD ["python", "main.py"]
+
 Ensuite, il suffit de suivre les instructions affichées dans la console pour tester la force d'un mot de passe.
 ## Auteur
 - Nom: Bouzac

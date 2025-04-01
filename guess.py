@@ -7,7 +7,7 @@ from tkinter import END
 MAX_PASSWORD_LENGTH = 64
 CHARS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 
-url = 'http://localhost/projets/BruteForce/index.php'
+url = 'http://localhost:8000/index.php'
 
 
 def guess_password(real, password_display):
@@ -26,7 +26,7 @@ def guess_password(real, password_display):
                     guess = ''.join(guess)
 
                     data = {
-                        'login': 'Test',
+                        'username': 'test',
                         'password': guess,
                         'submit': 'submit',
                     }
@@ -36,8 +36,8 @@ def guess_password(real, password_display):
                     response_url = response.url
 
                     print(guess)
-                    print(response_url + "=" + url)
-                    if response_url != url:
+                    print(response.content)
+                    if response.content == b'Connexion reussie<br />\n<b>Warning</b>:  Cannot modify header information - headers already sent by (output started at /var/www/html/index.php:27) in <b>/var/www/html/index.php</b> on line <b>28</b><br />\n':
                         end_time = time.perf_counter()
                         time_taken = round(end_time - start_time, 3)
                         result = f'\n\nLe mot de passe est {guess}. \nTrouvé après {attempts} tentatives. \nDurée: {time_taken} secondes.\n'
